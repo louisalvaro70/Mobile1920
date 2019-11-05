@@ -31,6 +31,7 @@ import timber.log.Timber
 const val KEY_REVENUE = "revenue_key"
 const val KEY_DESSERT_SOLD = "dessert_sold_key"
 const val KEY_TIMER_SECONDS = "timer_seconds_key"
+<<<<<<< HEAD
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,6 +39,13 @@ class MainActivity : AppCompatActivity() {
     private var dessertSold = 0
     private lateinit var dessertTimer: DessertTimer
 
+=======
+class MainActivity : AppCompatActivity() {
+
+    private var revenue = 0
+    private var dessertsSold = 0
+    private lateinit var dessertTimer: DessertTimer
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
     // Contains all the views
     private lateinit var binding: ActivityMainBinding
 
@@ -71,7 +79,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Timber.i("onCreate called")
+<<<<<<< HEAD
 
+=======
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
@@ -80,6 +91,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         dessertTimer = DessertTimer(this.lifecycle)
+<<<<<<< HEAD
 
         if(savedInstanceState != null){
             revenue = savedInstanceState.getInt(KEY_REVENUE, 0)
@@ -91,6 +103,19 @@ class MainActivity : AppCompatActivity() {
         // Set the TextViews to the right values
         binding.revenue = revenue
         binding.amountSold = dessertSold
+=======
+        if (savedInstanceState != null) {
+            revenue = savedInstanceState.getInt(KEY_REVENUE)
+            dessertTimer.secondsCount = savedInstanceState.getInt(KEY_TIMER_SECONDS)
+            dessertsSold = savedInstanceState.getInt(KEY_DESSERT_SOLD)
+            showCurrentDessert()
+        }
+        dessertTimer.startTimer()
+
+        // Set the TextViews to the right values
+        binding.revenue = revenue
+        binding.amountSold = dessertsSold
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
 
         // Make sure the correct dessert is showing
         binding.dessertButton.setImageResource(currentDessert.imageId)
@@ -103,10 +128,17 @@ class MainActivity : AppCompatActivity() {
 
         // Update the score
         revenue += currentDessert.price
+<<<<<<< HEAD
         dessertSold++
 
         binding.revenue = revenue
         binding.amountSold = dessertSold
+=======
+        dessertsSold++
+
+        binding.revenue = revenue
+        binding.amountSold = dessertsSold
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
 
         // Show the next dessert
         showCurrentDessert()
@@ -118,7 +150,11 @@ class MainActivity : AppCompatActivity() {
     private fun showCurrentDessert() {
         var newDessert = allDesserts[0]
         for (dessert in allDesserts) {
+<<<<<<< HEAD
             if (dessertSold >= dessert.startProductionAmount) {
+=======
+            if (dessertsSold >= dessert.startProductionAmount) {
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
                 newDessert = dessert
             }
             // The list of desserts is sorted by startProductionAmount. As you sell more desserts,
@@ -135,13 +171,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+<<<<<<< HEAD
     override fun onStart(){
         super.onStart()
+=======
+    override fun onStart() {
+        super.onStart()
+        //dessertTimer.startTimer()
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
         Timber.i("onStart called")
     }
 
     override fun onResume() {
         super.onResume()
+<<<<<<< HEAD
 
         Timber.i("onResume called")
     }
@@ -153,18 +196,32 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+=======
+        Timber.i("onResume called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        dessertTimer.stopTimer()
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
         Timber.i("onStop called")
     }
 
     override fun onDestroy() {
         super.onDestroy()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
         Timber.i("onDestroy called")
     }
 
     override fun onRestart() {
         super.onRestart()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
         Timber.i("onRestart called")
     }
 
@@ -173,7 +230,11 @@ class MainActivity : AppCompatActivity() {
      */
     private fun onShare() {
         val shareIntent = ShareCompat.IntentBuilder.from(this)
+<<<<<<< HEAD
                 .setText(getString(R.string.share_text, dessertSold, revenue))
+=======
+                .setText(getString(R.string.share_text, dessertsSold, revenue))
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
                 .setType("text/plain")
                 .intent
         try {
@@ -199,6 +260,7 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
 
+<<<<<<< HEAD
         outState.run {
             putInt(KEY_REVENUE, revenue)
             putInt(KEY_DESSERT_SOLD, dessertSold)
@@ -206,5 +268,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         Timber.i("onSaveInstanceState called")
+=======
+        outState?.run {
+            putInt(KEY_REVENUE, revenue)
+            putInt(KEY_DESSERT_SOLD, dessertsSold)
+            putInt(KEY_TIMER_SECONDS, dessertTimer.secondsCount)
+        }
+
+        Timber.i("onSaveInstance called")
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
     }
 }

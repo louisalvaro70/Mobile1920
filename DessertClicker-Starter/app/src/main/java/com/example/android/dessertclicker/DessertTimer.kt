@@ -37,7 +37,11 @@ import timber.log.Timber
  * https://developer.android.com/guide/components/processes-and-threads
  *
  */
+<<<<<<< HEAD
 class DessertTimer(lifecycle: Lifecycle) : LifecycleObserver {
+=======
+class DessertTimer(lifecycle: Lifecycle) : LifecycleObserver{
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
 
     // The number of seconds counted since the timer started
     var secondsCount = 0
@@ -49,7 +53,11 @@ class DessertTimer(lifecycle: Lifecycle) : LifecycleObserver {
     private var handler = Handler()
     private lateinit var runnable: Runnable
 
+<<<<<<< HEAD
     init {
+=======
+    init{
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
         lifecycle.addObserver(this)
     }
 
@@ -71,7 +79,11 @@ class DessertTimer(lifecycle: Lifecycle) : LifecycleObserver {
         // Note that the Thread the handler runs on is determined by a class called Looper.
         // In this case, no looper is defined, and it defaults to the main or UI thread.
     }
+<<<<<<< HEAD
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+=======
+
+>>>>>>> 11dab097169a269ae91a700b86d51b7523ac173e
     fun stopTimer() {
         // Removes all pending posts of runnable from the handler's queue, effectively stopping the
         // timer
