@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Giftsweeper (Reverse Minesweeper)</string>
+    <string name="timer_words">Time:</string>
+    <string name="bomb_count_words">Gifts:</string>
+    <string name="restart">Restart Game</string>
+    <string name="flag">Flag Mode</string>
+    <string name="reveal">Reveal Mode</string>
+    <string name="bottomtext">Find the gifts hidden in the tiles! Use the numbers to determine how many gifts are near the tile.</string>
+    <string name="bottomtext2">There are no bombs, just gifts! Search away!<br></br></string>
+</resources>
